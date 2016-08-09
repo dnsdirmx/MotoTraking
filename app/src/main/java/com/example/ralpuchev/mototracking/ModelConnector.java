@@ -1,6 +1,9 @@
 package com.example.ralpuchev.mototracking;
 
 import android.os.AsyncTask;
+import android.util.Log;
+
+import com.example.ralpuchev.mototracking.modelos.Usuario;
 
 import java.util.ArrayList;
 
@@ -21,6 +24,7 @@ public class ModelConnector {
 
     private ModelConnector() {
         enlace_motos = "http://sistema.enviaexpress.mx/ms/EnlaceMotosMovil.php";
+
         opciones = "";
         summoners = new ArrayList<Summoner>();
     }
@@ -40,7 +44,12 @@ public class ModelConnector {
     }
 
     public static synchronized void getRespuestaDeServidor(String ops, Summoner summoner){
+        Usuario usuario = Usuario.getActive();
+        if(usuario != null)
+            ops = "token=" + usuario.getToken() + "&" + ops;
         setOpciones(ops);
+        Log.d("ModelConnector", ops);
+        Log.d("ModelConnector",getUrl());
         setSummoner(summoner);
         com.example.ralpuchev.mototracking.AsyncTask nueva_tarea = new com.example.ralpuchev.mototracking.AsyncTask();
         nueva_tarea.setNumeroDeRespuesta(tarea_actual);

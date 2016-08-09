@@ -8,6 +8,8 @@
     <uses-permission android:name="com.example.googlemaps.permission.MAPS_RECEIVE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,7 +17,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login" android:configChanges="orientation"
+        <activity
+            android:name=".Login"
+            android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,15 +27,60 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Inicio" android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Inicio"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyCUS0hf2FeKwN8x8DK3noy3Z36uLQ39iJQ" />
 
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.example.ralpuchev.mototracking" />
+            </intent-filter>
+        </receiver>
+
+        <permission
+            android:name="com.example.ralpuchev.mototracking.permission.C2D_MESSAGE"
+            android:protectionLevel="signature" />
+
+        <uses-permission android:name="com.example.ralpuchev.mototracking.permission.C2D_MESSAGE" />
+
         <service
             android:name=".ActualizadorDeLocalizacion"
-            android:exported="false"/>
+            android:exported="false" />
+        <service
+            android:name=".RegistrationService"
+            android:exported="false" />
+        <service
+            android:name=".TokenRefreshListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".NotificationsListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".EntregaPendienteActivity" />
+        <activity android:name=".DatosEntregaActivity" />
+        <activity
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:name=".EntregasPendientesActivity" />
+
+        <activity android:name=".EntregasActivity"></activity>
     </application>
 
 </manifest>

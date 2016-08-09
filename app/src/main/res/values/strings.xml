@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Moto Tracking</string>
+    <string name="seccion_1">Inicio</string>
+    <string name="seccion_2">Entregas realizadas</string>
+    <string name="seccion_3">Entregas pendientes</string>
+    <string name="seccion_4">Salir</string>
+    <string name="usuario">hector</string>
 </resources>

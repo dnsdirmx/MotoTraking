@@ -13,6 +13,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.ralpuchev.mototracking.modelos.Usuario;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -50,7 +51,7 @@ public class ActualizadorDeLocalizacion extends IntentService implements
     private static LocationRequest mLocationRequest;
     private static long UPDATE_INTERVAL = 60000;  /* 60 secs */
     private static long FASTEST_INTERVAL = 15000; /* 15 secs */
-    public static String id_usuario = "0";
+    public static String id_usuario = String.valueOf(Usuario.getActive().getId());
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
 
     public void procesaRespuesta(String respuesta_servidor) {
@@ -147,7 +148,14 @@ public class ActualizadorDeLocalizacion extends IntentService implements
     }
 
     public void publicaLocalizacion(Location localizacion){
-        ModelConnector.getInstance().getRespuestaDeServidor("opcion=18&idusuario=" + this.id_usuario + "&lat=" + localizacion.getLatitude() + "&long=" + localizacion.getLongitude() + "&device=1", this);
+
+        if(Usuario.getActive() == null)
+        {
+            return;
+        }
+
+        this.id_usuario = String.valueOf(Usuario.getActive().getId());
+        ModelConnector.getInstance().getRespuestaDeServidor("opcion=18&idusuario=" + Usuario.getActive().getId() + "&lat=" + localizacion.getLatitude() + "&long=" + localizacion.getLongitude() + "&device=1", this);
 
         //publicamos al mapa la localizacion actual
         Intent localIntent = new Intent(BROADCAST_ACTION).putExtra(LOCALIZACION, localizacion.getLatitude()+"<>"+localizacion.getLongitude());

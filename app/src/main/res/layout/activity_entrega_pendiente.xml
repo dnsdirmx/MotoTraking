@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.ralpuchev.mototracking.EntregaPendienteActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descripción"
+        android:id="@+id/tDescripcion"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/txtDescripcion"
+        android:layout_below="@+id/tDescripcion"
+        android:maxLines="5"
+        android:lines="5"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Cliente Entrega"
+
+        android:id="@+id/tClienteEntrega"
+        android:layout_below="@+id/txtDescripcion"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:maxLines="4"
+        android:lines="4"
+        android:id="@+id/txtClienteEntrega"
+        android:layout_below="@+id/tClienteEntrega"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/txtDescripcion" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/txtCostoEntrega"
+        android:layout_below="@+id/txtClienteEntrega"
+        android:layout_alignParentEnd="true"
+        android:textColor="#0a9503"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Cliente Recibe"
+        android:id="@+id/tClienteRecibe"
+        android:layout_below="@+id/txtCostoEntrega"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/txtClienteRecibe"
+        android:maxLines="4"
+        android:lines="4"
+        android:layout_below="@+id/tClienteRecibe"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/txtCostoEntrega" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/txtCostoRecibe"
+        android:layout_below="@+id/txtClienteRecibe"
+        android:layout_alignEnd="@+id/txtClienteRecibe"
+        android:textColor="#0a9503"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:gravity="center"
+        android:id="@+id/txtHoraRecibe"
+        android:layout_below="@+id/txtCostoRecibe"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/txtCostoRecibe" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Medium Text"
+        android:id="@+id/txtIdEntrega"
+        android:textColor="#ee6363"
+        android:gravity="center"
+        android:maxLines="4"
+        android:lines="4"
+        android:layout_below="@+id/txtHoraRecibe"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_below="@+id/txtIdEntrega"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true">
+
+        <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recibí"
+        android:id="@+id/btnRecibo"
+        android:layout_alignTop="@+id/txtIdEntrega"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ya llegue"
+        android:id="@+id/btnLlegue"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Entrege"
+            android:id="@+id/btnEntregue"
+            android:layout_below="@+id/txtIdEntrega"
+            android:layout_toEndOf="@+id/tDescripcion" />
+    </LinearLayout>
+
+</RelativeLayout>
+</ScrollView>

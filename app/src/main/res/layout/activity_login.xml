@@ -60,9 +60,19 @@
         android:id="@+id/boton_entrar"
         android:background="#00b05c"
         android:textColor="#ffffff"
-        android:layout_marginTop="29dp"
+        android:onClick="entrar"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="127dp"
+        android:layout_alignEnd="@+id/campo_password"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recordarme"
+        android:id="@+id/remember"
         android:layout_below="@+id/campo_password"
-        android:layout_centerHorizontal="true"
-        android:onClick="validaLogin" />
+        android:layout_alignParentStart="true"
+        android:checked="true" />
 
 </RelativeLayout>

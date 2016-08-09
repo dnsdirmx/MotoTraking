@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "255368119521",
+    "project_id": "android-moto-tracking"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255368119521:android:5493446776617c53",
+        "android_client_info": {
+          "package_name": "com.example.ralpuchev.mototracking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFoWwAXzNSHTILn5oLDtq40H6mvlHoYus"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

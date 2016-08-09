@@ -77,10 +77,10 @@
         <activity android:name=".EntregaPendienteActivity" />
         <activity android:name=".DatosEntregaActivity" />
         <activity
-            android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:name=".EntregasPendientesActivity" />
-
-        <activity android:name=".EntregasActivity"></activity>
+            android:name=".EntregasPendientesActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
+        <activity android:name=".EntregasActivity" />
+        <activity android:name=".vistas.BaseActivity"></activity>
     </application>
 
 </manifest>

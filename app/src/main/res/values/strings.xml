@@ -5,4 +5,8 @@
     <string name="seccion_3">Entregas pendientes</string>
     <string name="seccion_4">Salir</string>
     <string name="usuario">hector</string>
+    <string name="optInicio">Inicio</string>
+    <string name="optEntRealizada">Entregas realizadas</string>
+    <string name="optEntPendiente">Entregas pendientes</string>
+    <string name="optSalir">Salir</string>
 </resources>

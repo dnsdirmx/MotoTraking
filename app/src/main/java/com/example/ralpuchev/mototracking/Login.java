@@ -13,8 +13,9 @@ import android.widget.Toast;
 
 import com.example.ralpuchev.mototracking.modelos.BaseDeDatos;
 import com.example.ralpuchev.mototracking.modelos.Usuario;
+import com.example.ralpuchev.mototracking.vistas.BaseActivity;
 
-public class Login extends AppCompatActivity implements Summoner{
+public class Login extends BaseActivity implements Summoner{
 
     private String[] info_login = null;
     //token|idusuario|nombrecompleto|nombre_usuario|password|correo
@@ -24,6 +25,11 @@ public class Login extends AppCompatActivity implements Summoner{
     ProgressDialog pdLogin = null;
 
     public boolean deslogea = false;
+
+    protected boolean useToolbar()
+    {
+        return false;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

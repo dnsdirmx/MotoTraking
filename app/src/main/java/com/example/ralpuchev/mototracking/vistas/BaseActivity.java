@@ -69,7 +69,9 @@ public class BaseActivity extends AppCompatActivity {
         else
         {
             //remover vista del drawerLayout
-
+            DrawerLayout container = (DrawerLayout) findViewById(R.id.activity_container);
+            NavigationView nv = (NavigationView) findViewById(R.id.navigationView);
+            container.removeView(nv);
         }
     }
 

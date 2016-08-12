@@ -57,19 +57,23 @@ public class Inicio extends AppCompatActivity implements Summoner {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
         BaseDeDatos.getInstance().setContext(this);
         Usuario usuario = Usuario.getActive();
 
+        Toast.makeText(this,"Pase 1",Toast.LENGTH_SHORT).show();
+
         if(usuario == null) finish();
 
+        Toast.makeText(this,"Pase 2",Toast.LENGTH_SHORT).show();
 
         id_usuario = String.valueOf(usuario.getId());
         token = usuario.getToken();
         usuario_nombre = usuario.getNombre();
 
-
+        Toast.makeText(this,"Pase 2",Toast.LENGTH_SHORT).show();
 
         System.out.println("Idusuario: " + id_usuario);
         Bundle extras = getIntent().getExtras();
@@ -80,9 +84,20 @@ public class Inicio extends AppCompatActivity implements Summoner {
                 this.lanzaAlertaNuevaEntrega(identrega);
             }
         }
+        Toast.makeText(this,"Pase 3",Toast.LENGTH_SHORT).show();
+
         cargaMapa();
+
+        Toast.makeText(this,"Pase 4",Toast.LENGTH_SHORT).show();
+
         cargaMenuLateral();
+
+        Toast.makeText(this,"Pase 5",Toast.LENGTH_SHORT).show();
+
         startServiceGCM();
+
+        Toast.makeText(this,"Pase 6",Toast.LENGTH_SHORT).show();
+
     }
 
     private void lanzaAlertaNuevaEntrega(final int identrega) {
@@ -216,8 +231,11 @@ public class Inicio extends AppCompatActivity implements Summoner {
         if(respuesta_servidor.equals("1"))
         {
             //Toast.makeText(this,"Cerrando sesión",Toast.LENGTH_SHORT);
+
             Usuario usuario = Usuario.getActive();
-            usuario.eliminar();
+            usuario.setLogueado(false);
+            usuario.save();
+
             if(pgLogout != null) pgLogout.dismiss();
             finish();
         }

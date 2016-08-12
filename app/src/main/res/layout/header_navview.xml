@@ -10,7 +10,7 @@ android:layout_height="match_parent">
     android:layout_height="200dp"
     android:src="@drawable/navheader"
     android:scaleType="centerCrop" />
-
+    
 <TextView
     android:id="@+id/titleUsuario"
     android:layout_width="wrap_content"

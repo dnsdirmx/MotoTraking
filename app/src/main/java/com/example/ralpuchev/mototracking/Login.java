@@ -49,7 +49,17 @@ public class Login extends BaseActivity implements Summoner{
                 ModelConnector.getInstance().getRespuestaDeServidor("opcion=3&usuario=" + usuario.getNombre() + "&password=" + usuario.getPassword(), this);
             }
         }
-
+        else
+        {
+            if(Usuario.getRememberUser() != null)
+            {
+                EditText nombre_usuario = (EditText) findViewById(R.id.campo_usuario);
+                EditText password_usuario = (EditText) findViewById(R.id.campo_password);
+                CheckBox remember = (CheckBox) findViewById(R.id.remember);
+                nombre_usuario.setText(Usuario.getRememberUser().getNombre());
+                password_usuario.setText(Usuario.getRememberUser().getPassword());
+            }
+        }
     }
 
     public void entrar(View view) {

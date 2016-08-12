@@ -94,6 +94,26 @@ public class Usuario {
     }
     public static final Usuario getActive()
     {
+        String consulta = "select * from usuario where logeado = 1";
+        MotoTrackingSQLiteHelper ush = new MotoTrackingSQLiteHelper(BaseDeDatos.getInstance().getContext(),BaseDeDatos.BD_NAME,null,BaseDeDatos.BD_VERSION);
+        SQLiteDatabase db = ush.getWritableDatabase();
+        Cursor c = db.rawQuery(consulta,null);
+        Usuario usuario = null;
+        if(c.moveToFirst())
+        {
+            usuario = new Usuario();
+            usuario.setId(c.getInt(c.getColumnIndex("id")));
+            usuario.setNombre(c.getString(c.getColumnIndex("nombre")));
+            usuario.setPassword(c.getString(c.getColumnIndex("password")));
+            usuario.setToken(c.getString(c.getColumnIndex("token")));
+            usuario.setRemember(c.getInt(c.getColumnIndex("remember")) == 1 ? true : false);
+            usuario.setLogueado(c.getInt(c.getColumnIndex("logeado")) == 1 ? true : false);
+
+        }
+        db.close();
+        return usuario;
+    }
+    public static final Usuario getRememberUser(){
         String consulta = "select * from usuario where remember = 1";
         MotoTrackingSQLiteHelper ush = new MotoTrackingSQLiteHelper(BaseDeDatos.getInstance().getContext(),BaseDeDatos.BD_NAME,null,BaseDeDatos.BD_VERSION);
         SQLiteDatabase db = ush.getWritableDatabase();
@@ -117,7 +137,9 @@ public class Usuario {
     {
         String elimina = "delete from usuario where id = " + this.id;
         MotoTrackingSQLiteHelper ush = new MotoTrackingSQLiteHelper(BaseDeDatos.getInstance().getContext(),BaseDeDatos.BD_NAME,null,BaseDeDatos.BD_VERSION);
+
         SQLiteDatabase db = ush.getWritableDatabase();
+
         db.execSQL(elimina);
         db.close();
     }

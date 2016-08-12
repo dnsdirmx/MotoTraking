@@ -130,79 +130,13 @@ public class Inicio extends AppCompatActivity implements Summoner {
         //motoToolbar = (Toolbar) findViewById(R.id.mototoolbar);
         //this.setSupportActionBar(motoToolbar);
         //se obtiene el drawer layout
-        NavigationView navview = (NavigationView)findViewById(R.id.navview);
+        NavigationView navview = (NavigationView)findViewById(R.id.navigationView);
         //carga la cabecera
         View headerLayout = navview.getHeaderView(0);
         //carga el textview que tiene el nombre
         TextView iUsuario = (TextView) headerLayout.findViewById(R.id.titleUsuario);
         //modifica el contenido
         iUsuario.setText(usuario_nombre);
-
-        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        navView = (NavigationView)findViewById(R.id.navview);
-        navView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        switch (menuItem.getItemId()) {
-                            case R.id.menu_seccion_1:
-                                Toast.makeText(Inicio.this, "Opcion inicio", Toast.LENGTH_SHORT).show();
-                                break;
-                            case R.id.menu_seccion_2:
-                                Toast.makeText(Inicio.this, "Opcion entregados", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(Inicio.this,EntregasActivity.class);
-                                startActivity(intent);
-                                break;
-                            case R.id.menu_seccion_3:
-                                Toast.makeText(Inicio.this, "Opcion recibidos", Toast.LENGTH_SHORT).show();
-                                break;
-                            case R.id.menu_seccion_4:
-                                //Toast.makeText(Inicio.this, "Opcion salir", Toast.LENGTH_SHORT).show();
-                                pgLogout = ProgressDialog.show(Inicio.this, "Cerrando sesión", "Espere...");
-
-                                if(Usuario.getActive().isRemember())
-                                {
-                                    Usuario.getActive().signOut();
-                                }
-                                ModelConnector.getInstance().getRespuestaDeServidor("opcion=4&token=" + Inicio.this.token, Inicio.this);
-                                if(actualizador_intent != null) Inicio.this.stopService(actualizador_intent);
-                                if(notificacionesServicio != null) Inicio.this.stopService(notificacionesServicio);
-                                //Inicio.this.finish();
-                                break;
-                        }
-
-                        drawerLayout.closeDrawers();
-
-                        return true;
-                    }
-                });
-/*
-        mDrawerToggle = new ActionBarDrawerToggle(
-                this,                  /* host Activity */
-//                drawerLayout,         /* DrawerLayout object *///
-//                motoToolbar,  /* nav drawer icon to replace 'Up' caret */
-//                R.string.app_name,  /* "open drawer" description */
-//                R.string.app_name  /* "close drawer" description */
-//        ) {
-
-            /** Called when a drawer has settled in a completely closed state. *///
-//            public void onDrawerClosed(View view) {
-//                super.onDrawerClosed(view);
-//                motoToolbar.setTitle("un titulo");
-//            }
-
-            /** Called when a drawer has settled in a completely open state. */
-//            public void onDrawerOpened(View drawerView) {
-//                super.onDrawerOpened(drawerView);
-//                motoToolbar.setTitle("otro titulo");
-//            }
-//        };
-//*/
-        // Set the drawer toggle as the DrawerListener
-//        drawerLayout.setDrawerListener(mDrawerToggle);
-
-        //motoToolbar.setDisplayHomeAsUpEnabled(true);
-        //motoToolbar.setHomeButtonEnabled(true);
     }
     public void startServiceGCM()
     {

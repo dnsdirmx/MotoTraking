@@ -1,5 +1,4 @@
 package com.example.ralpuchev.mototracking;
-
 import android.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

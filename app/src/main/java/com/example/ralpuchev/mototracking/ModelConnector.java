@@ -23,8 +23,8 @@ public class ModelConnector {
     }
 
     private ModelConnector() {
-        enlace_motos = "http://sistema.enviaexpress.mx/ms/EnlaceMotosMovil.php";
-
+        //enlace_motos = "http://sistema.enviaexpress.mx/ms/EnlaceMotosMovil.php";
+        enlace_motos = "http://192.168.1.72/motos/ms/EnlaceMotosMovil.php";
         opciones = "";
         summoners = new ArrayList<Summoner>();
     }

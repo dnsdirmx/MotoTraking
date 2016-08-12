@@ -25,11 +25,16 @@ public class Login extends BaseActivity implements Summoner{
     ProgressDialog pdLogin = null;
 
     public boolean deslogea = false;
-
+    @Override
     protected boolean useToolbar()
     {
+        return true;
+    }
+    @Override
+    protected boolean useDrawerLayout() {
         return false;
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

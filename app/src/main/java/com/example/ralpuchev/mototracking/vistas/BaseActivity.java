@@ -73,7 +73,7 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    private boolean useDrawerLayout() {
+    protected boolean useDrawerLayout() {
         return true;
     }
 

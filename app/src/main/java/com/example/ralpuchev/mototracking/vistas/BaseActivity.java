@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.ralpuchev.mototracking.EntregasActivity;
 import com.example.ralpuchev.mototracking.R;
 import com.example.ralpuchev.mototracking.modelos.BaseDeDatos;
+import com.example.ralpuchev.mototracking.modelos.Usuario;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -21,6 +22,7 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         BaseDeDatos.setContext(this);
+
         setContentView(R.layout.activity_base);
     }
 

@@ -24,8 +24,7 @@ public class BaseDeDatos {
     {
         ourInstance.context = context;
     }
-
-    public Context getContext() {
-        return context;
+    public static Context getContext() {
+        return ourInstance.context;
     }
 }

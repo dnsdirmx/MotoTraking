@@ -60,7 +60,7 @@ public class Inicio extends AppCompatActivity implements Summoner {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
-        BaseDeDatos.getInstance().setContext(this);
+
         Usuario usuario = Usuario.getActive();
 
         Toast.makeText(this,"Pase 1",Toast.LENGTH_SHORT).show();

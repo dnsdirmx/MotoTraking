@@ -9,12 +9,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ralpuchev.mototracking.EntregasActivity;
 import com.example.ralpuchev.mototracking.R;
 import com.example.ralpuchev.mototracking.modelos.BaseDeDatos;
 import com.example.ralpuchev.mototracking.modelos.Usuario;
+import com.orm.SugarContext;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -22,7 +24,7 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         BaseDeDatos.setContext(this);
-
+         SugarContext.init(this);
         setContentView(R.layout.activity_base);
     }
 
@@ -46,6 +48,14 @@ public class BaseActivity extends AppCompatActivity {
         //verificar si esta logueado
         if(useDrawerLayout()) {
             NavigationView nv = (NavigationView) findViewById(R.id.navigationView);
+            NavigationView navview = (NavigationView)findViewById(R.id.navigationView);
+            //carga la cabecera
+            View headerLayout = navview.getHeaderView(0);
+            //carga el textview que tiene el nombre
+            TextView iUsuario = (TextView) headerLayout.findViewById(R.id.titleUsuario);
+            //modifica el contenido
+            Usuario usuario = Usuario.getActive();
+            iUsuario.setText(usuario.getNombre());
             nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(MenuItem item) {

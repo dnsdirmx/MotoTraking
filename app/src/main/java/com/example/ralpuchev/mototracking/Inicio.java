@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.example.ralpuchev.mototracking.modelos.BaseDeDatos;
 import com.example.ralpuchev.mototracking.modelos.Usuario;
+import com.example.ralpuchev.mototracking.vistas.BaseActivity;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -37,7 +38,7 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 
-public class Inicio extends AppCompatActivity implements Summoner {
+public class Inicio extends BaseActivity implements Summoner {
 
     public static final String IS_NEW_ENTREGA = "3";
     public static final String IS_REALIZADAS = "4";
@@ -145,13 +146,7 @@ public class Inicio extends AppCompatActivity implements Summoner {
         //motoToolbar = (Toolbar) findViewById(R.id.mototoolbar);
         //this.setSupportActionBar(motoToolbar);
         //se obtiene el drawer layout
-        NavigationView navview = (NavigationView)findViewById(R.id.navigationView);
-        //carga la cabecera
-        View headerLayout = navview.getHeaderView(0);
-        //carga el textview que tiene el nombre
-        TextView iUsuario = (TextView) headerLayout.findViewById(R.id.titleUsuario);
-        //modifica el contenido
-        iUsuario.setText(usuario_nombre);
+
     }
     public void startServiceGCM()
     {

@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TabHost;
 
-public class EntregasActivity extends AppCompatActivity {
+import com.example.ralpuchev.mototracking.vistas.BaseActivity;
+
+public class EntregasActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

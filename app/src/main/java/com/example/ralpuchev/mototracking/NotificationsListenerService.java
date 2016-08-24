@@ -85,7 +85,7 @@ public class NotificationsListenerService extends GcmListenerService {
 
         entrega.setClienteEntrega(clienteEntrega);
         entrega.setClienteRecibe(clienteRecibe);
-        entrega.setIdUsuario(Usuario.getActive().getId());
+        entrega.setIdUsuario(Usuario.getActive().getId().intValue());
         return entrega;
     }
 

@@ -22,12 +22,13 @@ import android.widget.Toast;
 import com.example.ralpuchev.mototracking.modelos.Entrega;
 import com.example.ralpuchev.mototracking.modelos.EstatusProceso;
 import com.example.ralpuchev.mototracking.modelos.Usuario;
+import com.example.ralpuchev.mototracking.vistas.BaseActivity;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DatosEntregaActivity extends AppCompatActivity {
+public class DatosEntregaActivity extends BaseActivity {
     public static final int THUMBNAIL_WIDTH = 64;
     public static final int THUMBNAIL_HEIGHT = 64;
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
@@ -45,7 +46,7 @@ public class DatosEntregaActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         int idEntrega = bundle.getInt(Inicio.IS_NEW_ENTREGA);
-        entrega = Entrega.finById(idEntrega);
+        entrega = Entrega.findById(Entrega.class,idEntrega);
 
         if(entrega == null)
         {
@@ -99,8 +100,8 @@ public class DatosEntregaActivity extends AppCompatActivity {
 
                         TextView txtNombre = (TextView) findViewById(R.id.txtNombre);
                         entrega.setNombreRecibio(txtNombre.getText().toString());
+                        entrega.setStatus(EstatusProceso.PROCESO_FINALIZADO);
                         entrega.save();
-                        entrega.updateStatus(EstatusProceso.PROCESO_FINALIZADO);
                         enviaEstatus es = new enviaEstatus(Usuario.getActive(),entrega);
 
 

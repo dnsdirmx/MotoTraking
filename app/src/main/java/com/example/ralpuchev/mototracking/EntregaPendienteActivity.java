@@ -15,20 +15,21 @@ import android.widget.Toast;
 import com.example.ralpuchev.mototracking.modelos.Entrega;
 import com.example.ralpuchev.mototracking.modelos.EstatusProceso;
 import com.example.ralpuchev.mototracking.modelos.Usuario;
+import com.example.ralpuchev.mototracking.vistas.BaseActivity;
 
 import java.text.SimpleDateFormat;
 
 import static com.example.ralpuchev.mototracking.modelos.EstatusProceso.*;
 
-public class EntregaPendienteActivity extends AppCompatActivity {
+public class EntregaPendienteActivity extends BaseActivity {
     Entrega entrega = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entrega_pendiente);
         Bundle bundle = getIntent().getExtras();
-        int idEntrega = bundle.getInt(Inicio.IS_NEW_ENTREGA);
-        entrega = Entrega.finById(idEntrega);
+        Integer idEntrega = bundle.getInt(Inicio.IS_NEW_ENTREGA);
+        entrega = Entrega.findById(Entrega.class,idEntrega.longValue());
 
         if(entrega == null)
         {
@@ -102,8 +103,9 @@ public class EntregaPendienteActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         EstatusProceso ep = new EstatusProceso(usuario,entrega,EstatusProceso.LLEGUE_AL_DESTINO);
                         activaBntsLlegue();
-
-                        entrega.updateStatus(EstatusProceso.LLEGUE_AL_DESTINO);
+                        entrega.setStatus(EstatusProceso.LLEGUE_AL_DESTINO);
+                        entrega.save();
+                        //entrega.updateStatus();
                         refresca();
                     }
                 })
@@ -125,7 +127,9 @@ public class EntregaPendienteActivity extends AppCompatActivity {
                         EstatusProceso ep = new EstatusProceso(usuario,entrega,EstatusProceso.RECOGI_PAQUETE);
                         ep.getRespuesta();
                         activaBntsRecibo();
-                        entrega.updateStatus(EstatusProceso.RECOGI_PAQUETE);
+                        entrega.setStatus(EstatusProceso.RECOGI_PAQUETE);
+                        entrega.save();
+                        //entrega.updateStatus();
 
                         refresca();
                     }

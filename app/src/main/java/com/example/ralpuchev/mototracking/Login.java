@@ -120,7 +120,8 @@ public class Login extends BaseActivity implements Summoner{
             CheckBox remember = (CheckBox) findViewById(R.id.remember);
             Usuario usuario = new Usuario();
             Log.d("Login", this.info_login[1]);
-            usuario.setId(Integer.parseInt(this.info_login[1]));
+            Integer id = Integer.parseInt(this.info_login[1]);
+            usuario.setId(id.longValue());
             usuario.setNombre(nombre_usuario.getText().toString());
             usuario.setPassword(password_usuario.getText().toString());
             usuario.setRemember(remember.isChecked());

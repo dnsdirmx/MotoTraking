@@ -9,10 +9,12 @@ import android.widget.Toast;
 
 import com.example.ralpuchev.mototracking.modelos.Entrega;
 import com.example.ralpuchev.mototracking.modelos.EstatusProceso;
+import com.example.ralpuchev.mototracking.vistas.BaseActivity;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class EntregasPendientesActivity extends AppCompatActivity {
+public class EntregasPendientesActivity extends BaseActivity {
 
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLayoutManager;
@@ -28,7 +30,12 @@ public class EntregasPendientesActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         boolean esRealizadas = bundle.getBoolean(Inicio.IS_REALIZADAS, false);
 
-        ArrayList<Entrega> entregas = Entrega.findAll();
+        ArrayList<Entrega> entregas = new ArrayList<Entrega>();
+        Iterator<Entrega> iter = Entrega.findAll(Entrega.class);
+        while(iter.hasNext())
+        {
+            entregas.add(iter.next());
+        }
         ArrayList<Entrega> tmEntrega = new ArrayList<Entrega>();
         if(esRealizadas)
         {
